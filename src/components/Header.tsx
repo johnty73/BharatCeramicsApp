@@ -58,8 +58,18 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Desktop Sign In Button */}
-          <div className="hidden md:flex">
+          {/* Desktop Auth Buttons */}
+          <div className="hidden md:flex items-center space-x-3">
+            {!isSignedIn && (
+              <Link to="/signup">
+                <Button
+                  variant="outline"
+                  className="border-red-600 text-red-600 hover:bg-red-50"
+                >
+                  Sign Up
+                </Button>
+              </Link>
+            )}
             <Button
               onClick={handleSignIn}
               variant={isSignedIn ? "outline" : "default"}
@@ -99,7 +109,17 @@ const Header = () => {
                   {link.name}
                 </Link>
               ))}
-              <div className="pt-3 border-t border-gray-200">
+              <div className="pt-3 border-t border-gray-200 space-y-2">
+                {!isSignedIn && (
+                  <Link to="/signup" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Button
+                      variant="outline"
+                      className="w-full border-red-600 text-red-600 hover:bg-red-50"
+                    >
+                      Sign Up
+                    </Button>
+                  </Link>
+                )}
                 <Button
                   onClick={handleSignIn}
                   variant={isSignedIn ? "outline" : "default"}
